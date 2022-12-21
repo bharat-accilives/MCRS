@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "925377241315",
+    "project_id": "medical-college-referal-system",
+    "storage_bucket": "medical-college-referal-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925377241315:android:f59cd04c47fe0a3c46e5d6",
+        "android_client_info": {
+          "package_name": "com.accilives.mcrs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925377241315-b5r2m2fc0cpphoc72bvf7ughh1ne24kc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.accilives.mcrs",
+            "certificate_hash": "036e48fe5d08e920fd78f0d765ae81d7e56c2eb6"
+          }
+        },
+        {
+          "client_id": "925377241315-quijt4hfp79oeo1au5f4oicvh5ebddm5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5kYTQPcx3ixAMrJNa-W9-fb4HV-q3U3M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "925377241315-quijt4hfp79oeo1au5f4oicvh5ebddm5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
