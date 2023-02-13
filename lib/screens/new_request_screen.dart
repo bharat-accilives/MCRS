@@ -132,6 +132,7 @@ class _AddRequestsScreenState extends State<AddRequestsScreen> {
                         Container(
                           width: double.maxFinite,
                           height: 50,
+
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(10),
@@ -151,6 +152,7 @@ class _AddRequestsScreenState extends State<AddRequestsScreen> {
                               setState(() {
                                 age= str;
                               });
+
                             },
                           ),
                         ),
@@ -168,6 +170,7 @@ class _AddRequestsScreenState extends State<AddRequestsScreen> {
                         Container(
                           width: double.maxFinite,
                           height: 50 ,
+
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(10),
@@ -176,6 +179,7 @@ class _AddRequestsScreenState extends State<AddRequestsScreen> {
                                     color: Colors.grey, blurRadius: 1, offset: Offset(0, 1))
                               ]),
                           padding: EdgeInsets.symmetric(horizontal: 15),
+
                         ),
                       ],
                     ),
@@ -191,6 +195,7 @@ class _AddRequestsScreenState extends State<AddRequestsScreen> {
                         Container(
                           width: double.maxFinite,
                           height: 50 ,
+
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(10),
@@ -206,6 +211,7 @@ class _AddRequestsScreenState extends State<AddRequestsScreen> {
                               setState(() {
                                 transferredTo=str;
                               });
+
                             },
                           ),
                         ),
@@ -275,6 +281,7 @@ class _AddRequestsScreenState extends State<AddRequestsScreen> {
                     ],
                   ),
                 ),
+
                   SizedBox(height: 20),
                   loading
                       ? Center(
