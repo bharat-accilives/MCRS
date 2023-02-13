@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 class AddRequestsScreen extends StatefulWidget {
@@ -19,6 +20,7 @@ class _AddRequestsScreenState extends State<AddRequestsScreen> {
   String age = "";
   String sex = "";
   String uhid = "";
+  String transferredTo="";
   File? referralSlip;
   String reasonOfReferral = "";
   bool loading = false;
@@ -87,13 +89,129 @@ class _AddRequestsScreenState extends State<AddRequestsScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 30),
-                  customInputField(title: "Full Name", type: "String"),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Full Name"),
+                        SizedBox(height: 5),
+                        Container(
+                          width: double.maxFinite,
+                          height: 50,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey, blurRadius: 1, offset: Offset(0, 1))
+                              ]),
+                          padding: EdgeInsets.symmetric(horizontal: 15),
+                          child: TextFormField(
+                            initialValue: name,
+                            maxLines: 4,
+                            decoration: InputDecoration(border: InputBorder.none),
+                            onChanged: (str) {
+                              setState(() {
+                              name=str;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                   SizedBox(height: 10),
-                  customInputField(title: "Age", type: "String"),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Age"),
+                        SizedBox(height: 5),
+                        Container(
+                          width: double.maxFinite,
+                          height: 50,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey, blurRadius: 1, offset: Offset(0, 1))
+                              ]),
+                          padding: EdgeInsets.symmetric(horizontal: 15),
+                          child: TextFormField(
+                            initialValue: age,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ], // Only n
+                            decoration: InputDecoration(border: InputBorder.none),
+                            onChanged: (str) {
+                              setState(() {
+                                age= str;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                   SizedBox(height: 10),
-                  customInputField(title: "Sex", type: "String"),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Sex"),
+                        SizedBox(height: 5),
+                        Container(
+                          width: double.maxFinite,
+                          height: 50 ,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey, blurRadius: 1, offset: Offset(0, 1))
+                              ]),
+                          padding: EdgeInsets.symmetric(horizontal: 15),
+                        ),
+                      ],
+                    ),
+                  ),
                   SizedBox(height: 10),
-                  customInputField(title: "Transfered to", type: "String"),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Transfered to"),
+                        SizedBox(height: 5),
+                        Container(
+                          width: double.maxFinite,
+                          height: 50 ,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey, blurRadius: 1, offset: Offset(0, 1))
+                              ]),
+                          padding: EdgeInsets.symmetric(horizontal: 15),
+                          child: TextFormField(
+                            initialValue: transferredTo,
+                            decoration: InputDecoration(border: InputBorder.none),
+                            onChanged: (str) {
+                              setState(() {
+                                transferredTo=str;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                   SizedBox(height: 10),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
@@ -125,10 +243,38 @@ class _AddRequestsScreenState extends State<AddRequestsScreen> {
                     ),
                   ),
                   SizedBox(height: 10),
-                  customInputField(
-                      title: "Reason of Referral (optional)",
-                      type: "String",
-                      maxlines: 4),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Reason of Referral (optional)"),
+                      SizedBox(height: 5),
+                      Container(
+                        width: double.maxFinite,
+                        height: 50 + (4 > 1 ? (12.5 *4) : 0),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey, blurRadius: 1, offset: Offset(0, 1))
+                            ]),
+                        padding: EdgeInsets.symmetric(horizontal: 15),
+                        child: TextFormField(
+                          initialValue: reasonOfReferral,
+                          maxLines: 4,
+                          decoration: InputDecoration(border: InputBorder.none),
+                          onChanged: (str) {
+                            setState(() {
+                               reasonOfReferral=str;
+                            });
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                   SizedBox(height: 20),
                   loading
                       ? Center(
@@ -211,50 +357,11 @@ class _AddRequestsScreenState extends State<AddRequestsScreen> {
     );
   }
 
-  Widget customInputField({
-    required String type,
-    required String title,
-    onChanged,
-    double maxlines = 1,
-    String? initVal,
-    List<String>? items,
-  }) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(title.toString()),
-          SizedBox(height: 5),
-          Container(
-            width: double.maxFinite,
-            height: 50 + (maxlines > 1 ? (12.5 * maxlines) : 0),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.grey, blurRadius: 1, offset: Offset(0, 1))
-                ]),
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            child: TextFormField(
-              initialValue: initVal,
-              maxLines: maxlines.floor(),
-              decoration: InputDecoration(border: InputBorder.none),
-              onChanged: (str) {
-                initVal = str;
-                onChanged(str);
-              },
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+
 
   Future uploadImageToFirebase() async {
     Reference firebaseStorageRef =
-        FirebaseStorage.instance.ref().child('banners/${getRandomString(10)}');
+        FirebaseStorage.instance.ref().child('images/${getRandomString(10)}');
     UploadTask uploadTask = firebaseStorageRef.putFile(referralSlip!);
     TaskSnapshot taskSnapshot = await uploadTask;
     String url = await taskSnapshot.ref.getDownloadURL();
